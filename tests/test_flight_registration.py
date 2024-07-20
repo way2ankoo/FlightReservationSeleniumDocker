@@ -1,8 +1,8 @@
 import pytest
 
-from pages.flight_search_page import FlightSearch
-from pages.registration_confirmation import RegistrationConfirmation
-from pages.registration_page import RegistrationPage
+from main.pages.flight_search_page import FlightSearch
+from main.pages.registration_confirmation import RegistrationConfirmation
+from main.pages.registration_page import RegistrationPage
 
 
 @pytest.mark.usefixtures("driver")
