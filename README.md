@@ -20,6 +20,7 @@ This repository contains a Python Selenium test framework using pytest and Selen
 
    ```bash
    pip install -r requirements.txt
+   (selenium, pytest, pytest-dependency & pytest-html)
 
 3. **Pull below docker images:**
 
@@ -28,7 +29,7 @@ This repository contains a Python Selenium test framework using pytest and Selen
    selenium/node-chrome
    selenium/node-firefox
    
-4. **Use docker-compose.yaml and spin-up containers to start Selenium Grid:**
+4. **Use docker-compose.yml and spin-up containers to start Selenium Grid:**
    
    ```bash
    docker-compose up
