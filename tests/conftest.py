@@ -1,3 +1,6 @@
+import datetime
+import os.path
+
 import pytest
 from selenium import webdriver
 
@@ -25,3 +28,13 @@ def driver(request):
     request.cls.driver = driver
     yield driver
     driver.quit()
+
+
+def pytest_configure(config):
+    if not os.path.exists('results'):
+        os.makedirs('results')
+
+    now = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    report_file = f"results/report_{now}.html"
+
+    config.option.htmlpath = report_file
