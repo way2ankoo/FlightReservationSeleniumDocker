@@ -1,0 +1,11 @@
+{
+  "first_name" : "ankit",
+  "last_name": "rawat",
+  "email": "wah@gal.com",
+  "password": "admin",
+  "street": "123, nak bengaluru",
+  "city": "bengaluru",
+  "zip": "564512",
+  "passengers_count": "1",
+  "expected_price": "$584 USD"
+}

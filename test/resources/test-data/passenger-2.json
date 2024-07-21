@@ -1,0 +1,11 @@
+{
+  "first_name" : "aman ",
+  "last_name": "vaghel",
+  "email": "amanvag@gmail.com",
+  "password": "admin12",
+  "street": "123, nk mysure",
+  "city": "mysuru",
+  "zip": "458965",
+  "passengers_count": "2",
+  "expected_price": "$1169 USD"
+}

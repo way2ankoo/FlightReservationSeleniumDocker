@@ -1,0 +1,11 @@
+{
+  "first_name" : "mike",
+  "last_name": "jogin",
+  "email": "hegkl@gmail.com",
+  "password": "234admin",
+  "street": "1/2, pune cafe",
+  "city": "pune",
+  "zip": "260075",
+  "passengers_count": "3",
+  "expected_price": "$1753 USD"
+}
