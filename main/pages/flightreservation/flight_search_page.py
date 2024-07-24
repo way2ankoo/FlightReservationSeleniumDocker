@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
-from main.base_class import BaseClass
+from main.pages.base_class import BaseClass
 
 
 class FlightSearch(BaseClass):

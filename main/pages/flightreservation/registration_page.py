@@ -1,8 +1,6 @@
 from selenium.webdriver.common.by import By
 
-from selenium.webdriver.support import expected_conditions as EC
-
-from main.base_class import BaseClass
+from main.pages.base_class import BaseClass
 
 
 class RegistrationPage(BaseClass):
