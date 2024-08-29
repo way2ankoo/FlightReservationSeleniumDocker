@@ -1,15 +1,22 @@
-version: "3"
+version: "3.7"
 services:
   hub:
     image: selenium/hub
     ports:
       - 4444:4444
+    healthcheck:
+      test: ["CMD", "curl", "-s", "http://localhost:4444/wd/hub/status"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
 
   chrome:
     image: selenium/node-chrome
     shm_size: '2g'
     depends_on:
-      - hub
+      hub:
+        condition: service_healthy
     environment:
       - SE_EVENT_BUS_HOST=hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
@@ -19,8 +26,16 @@ services:
     image: selenium/node-firefox
     shm_size: '2g'
     depends_on:
-      - hub
+      hub:
+        condition: service_healthy
     environment:
       - SE_EVENT_BUS_HOST=hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
+  test-framework:
+    image: way2ankoo/selenium-docker
+    depends_on:
+      - chrome
+    environment:
+      - SELENIUM_HUB_HOST=hub

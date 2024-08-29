@@ -24,17 +24,16 @@ def load_data(data_paths, data_model):
 
 
 def load_passenger_data():
-    test_data_paths = ["test\\resources\\test-data\\flightreservation\\passenger-1.json",
-                       "test\\resources\\test-data\\flightreservation\\passenger-2.json",
-                       "test\\resources\\test-data\\flightreservation\\passenger-3.json"]
+    test_data_paths = [os.path.join("test", "resources", "test-data", "flightreservation", "passenger-1.json"),
+                       os.path.join("test", "resources", "test-data", "flightreservation", "passenger-2.json"),
+                       os.path.join("test", "resources", "test-data", "flightreservation", "passenger-3.json")
+                       ]
 
     return load_data(test_data_paths, FlightReservationTestData)
 
 
 def load_vendor_data():
-    test_data_paths = ["test\\resources\\test-data\\vendorportal\\john.json",
-                       "test\\resources\\test-data\\vendorportal\\mike.json",
-                       "test\\resources\\test-data\\vendorportal\\sam.json"]
+    test_data_paths = [os.path.join("test", "resources", "test-data", "vendorportal", "john.json"), os.path.join("test", "resources", "test-data", "vendorportal", "mike.json"), os.path.join("test", "resources", "test-data", "vendorportal", "sam.json")]
 
     return load_data(test_data_paths, VendorPortalTestData)
 
@@ -50,16 +49,13 @@ def vendor_data(request):
 
 
 @pytest.fixture(scope="class")
-# @pytest.fixture(scope="class", params=["chrome", "firefox"])
 def driver(request):
-    # global driver
     # for local execution
     # driver = webdriver.Chrome()
 
     # for remote execution Eg. selenium grid
-    # browser = request.config.getoption("--browser")
-    browser = request.param
-    selenium_grid_url = "http://localhost:4444/wd/hub"
+    browser = request.config.getoption("--browser")
+    selenium_grid_url = "http://"+os.getenv("SELENIUM_HUB_HOST")+":4444/wd/hub"  # get hub ip during runtime using "docker run -e SELENIUM_HUB_HOST=your_ip"
     if browser == "chrome":
         options = webdriver.ChromeOptions()
     elif browser == "firefox":

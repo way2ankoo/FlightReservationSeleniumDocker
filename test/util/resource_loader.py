@@ -7,7 +7,7 @@ class ResourceLoader:
     def get_resources(path):
         base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
         resource_path = os.path.join(base_dir, path)
-        # print(resource_path)
+        print(resource_path)
         data = None
         try:
             if os.path.exists(resource_path):
