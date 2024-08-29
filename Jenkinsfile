@@ -2,31 +2,25 @@ pipeline {
     agent any
 
     stages {
-        stage('Stage-1') {
+        stage('Build Image') {
             steps {
-                echo 'Hello World'
-                echo "Number = ${NUMBER}"
+                sh "docker build -t=way2ankoo/selenium ."
             }
         }
-        stage('Stage-2') {
+        stage('Push Image') {
             environment {
-                NUMBER = 6
+                DOCKER_HUB = credentials('dockerhub-creds')
             }
             steps {
-                echo 'firse Hello World'
-                echo "Number = ${NUMBER}"
-            }
-        }
-        stage('Stage-3') {
-            steps {
-                echo 'firse Hello World firse'
-                echo "Number = $(NUMBER)"
+                sh 'docker login -u ${DOCKER_HUB_USR} -p ${DOCKER_HUB_PSW}'
+                sh "docker push way2ankoo/selenium-docker"
             }
         }
     }
-    post{
-        always{
-            echo 'doing cleanup'
+
+    post {
+        always {
+            sh "docker logout"
         }
     }
 }
